@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 export default function GuessedWords({ guessedWords }) {
   let content;
   if (!guessedWords.length) {
-    content = <div data-test="guess-instructions">Try to guess the word!</div>;
+    content = (
+      <div data-test="guess-instructions">Try to guess the secret word!</div>
+    );
   } else {
     const guessedWordsRows = guessedWords.map((word, index) => {
       return (
@@ -17,8 +19,8 @@ export default function GuessedWords({ guessedWords }) {
     content = (
       <div data-test="guessed-words">
         <h3>Guessed Words</h3>
-        <table>
-          <thead>
+        <table className="table table-sm">
+          <thead className="thead-light">
             <tr>
               <th>Guess</th>
               <th>Matching Letters</th>
