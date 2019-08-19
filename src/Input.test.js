@@ -34,9 +34,26 @@ describe('render', () => {
     });
   });
   describe('word has been guessed', () => {
-    it('renders without error', () => {});
-    it("doesn't render input box", () => {});
-    it("doesn't render submit button", () => {});
+    let wrapper;
+
+    beforeEach(() => {
+      const initialState = { success: true };
+      wrapper = setup(initialState);
+      return wrapper;
+    });
+
+    it('renders without error', () => {
+      const component = findByTestAttr(wrapper, 'component-input');
+      expect(component.length).toBe(1);
+    });
+    it("doesn't render input box", () => {
+      const inputBox = findByTestAttr(wrapper, 'input-box');
+      expect(inputBox.length).toBe(0);
+    });
+    it("doesn't render submit button", () => {
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      expect(submitButton.length).toBe(0);
+    });
   });
 });
 

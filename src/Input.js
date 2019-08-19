@@ -33,8 +33,6 @@ export class Input extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {};
-}
+const mapStateToProps = ({ success }) => ({ success });
 
 export default connect(mapStateToProps)(Input);
