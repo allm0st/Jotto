@@ -3,10 +3,32 @@ import { connect } from 'react-redux';
 
 export class Input extends PureComponent {
   render() {
+    const content = this.props.success
+      ? null
+      : (
+        <form className="form-inline">
+          <input
+            data-test="input-box"
+            className="mb-2 mx-sm-3"
+            id="word-guess"
+            type="text"
+            placeholder="Enter guess"
+          />
+          <button
+            data-test="submit-button"
+            className="btn btn-primary mb-2"
+            id="word-submit"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      );
     return (
-      <div>
-        <button />
+      <div data-test="component-input">
+        {content}
       </div>
+      
     );
   }
 }
