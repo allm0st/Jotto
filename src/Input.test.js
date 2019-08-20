@@ -5,9 +5,11 @@ import Input from './Input';
 
 const setup = (initialState = {}) => {
   const store = storeFactory(initialState);
-  const wrapper = shallow(<Input store={store} />).dive().dive();
+  const wrapper = shallow(<Input store={store} />)
+    .dive()
+    .dive();
   return wrapper;
-}
+};
 
 describe('render', () => {
   describe('word has not been guessed', () => {
@@ -57,6 +59,16 @@ describe('render', () => {
   });
 });
 
-describe('state update', () => {
-
+describe('redux props', () => {
+  it('has success piece of state as a prop', () => {
+    const success = true;
+    const wrapper = setup({ success });
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toBe(success);
+  });
+  it('guessWord action creator is a function prop', () => {
+    const wrapper = setup();
+    const guessWordProp = wrapper.instance().props.guessWord;
+    expect(guessWordProp).toBeInstanceOf(Function);
+  });
 });
