@@ -10,6 +10,7 @@ export class UnconnectedInput extends PureComponent {
     const guessedWord = this.inputBox.current.value;
     if (guessedWord && guessedWord.length) {
       this.props.guessWord(guessedWord);
+      this.inputBox.current.value = '';
     }
   };
 
